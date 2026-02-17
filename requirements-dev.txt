@@ -1,0 +1,27 @@
+# Full development dependencies (extends requirements.txt)
+-r requirements.txt
+
+# Deep Learning
+tensorflow>=2.14.0
+
+# Feature Store & Model Registry
+hopsworks>=3.4.0
+
+# Flask API
+flask>=3.0.0
+flask-cors>=4.0.0
+
+# Explainability
+shap>=0.43.0
+lime>=0.2.0
+
+# Scheduling
+apscheduler>=3.10.0
+
+# Testing & Quality
+pytest>=7.4.0
+flake8>=6.1.0
+
+# Notebook
+jupyter>=1.0.0
+ipykernel>=6.25.0

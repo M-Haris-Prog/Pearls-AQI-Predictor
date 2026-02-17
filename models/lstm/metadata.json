@@ -1,0 +1,36 @@
+{
+  "model_name": "lstm",
+  "metrics": {
+    "rmse": 11.701698453811808,
+    "mae": 9.446423771405458,
+    "r2": -1.2163776907800967
+  },
+  "trained_at": "2026-02-17T08:50:33.202225",
+  "features": [
+    "pm2_5",
+    "pm10",
+    "no2",
+    "so2",
+    "co",
+    "o3",
+    "temperature",
+    "humidity",
+    "wind_speed",
+    "pressure",
+    "hour",
+    "day_of_week",
+    "month",
+    "is_weekend",
+    "season",
+    "aqi_change_rate",
+    "pm25_pm10_ratio",
+    "rolling_aqi_6h",
+    "rolling_aqi_12h",
+    "rolling_aqi_24h",
+    "aqi_lag_1",
+    "aqi_lag_3",
+    "aqi_lag_6",
+    "aqi_lag_12",
+    "aqi_lag_24"
+  ]
+}

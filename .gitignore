@@ -5,9 +5,9 @@ venv/
 env/
 aqienv/
 
-# Data & Models (local cache)
-data/
-models/
+# Data & Models — keep models/ and data/ in repo for Streamlit Cloud deployment
+# (only ignore raw data cache)
+data/raw/
 
 # Python
 __pycache__/

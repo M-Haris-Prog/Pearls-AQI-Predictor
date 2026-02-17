@@ -1,13 +1,27 @@
 """
 Central configuration for the AQI Predictor project.
 Loads environment variables and defines constants.
+Supports both .env files (local) and Streamlit secrets (cloud deployment).
 """
 import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-# Load environment variables
+# Load environment variables from .env (local development)
 load_dotenv()
+
+
+def _get_secret(key: str, default: str = "") -> str:
+    """Get a secret from environment variables or Streamlit secrets."""
+    value = os.getenv(key, "")
+    if value:
+        return value
+    try:
+        import streamlit as st
+        return st.secrets.get(key, default)
+    except Exception:
+        return default
+
 
 # ─── Project Paths ───────────────────────────────────────────────
 PROJECT_ROOT = Path(__file__).parent.parent
@@ -21,9 +35,9 @@ for d in [RAW_DATA_DIR, PROCESSED_DATA_DIR, MODELS_DIR]:
     d.mkdir(parents=True, exist_ok=True)
 
 # ─── API Keys ────────────────────────────────────────────────────
-OPENWEATHER_API_KEY = os.getenv("OPENWEATHER_API_KEY", "")
-HOPSWORKS_API_KEY = os.getenv("HOPSWORKS_API_KEY", "")
-HOPSWORKS_PROJECT_NAME = os.getenv("HOPSWORKS_PROJECT_NAME", "")
+OPENWEATHER_API_KEY = _get_secret("OPENWEATHER_API_KEY")
+HOPSWORKS_API_KEY = _get_secret("HOPSWORKS_API_KEY")
+HOPSWORKS_PROJECT_NAME = _get_secret("HOPSWORKS_PROJECT_NAME")
 
 # ─── City Configuration ─────────────────────────────────────────
 CITY_NAME = os.getenv("CITY_NAME", "Lahore")

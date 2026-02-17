@@ -243,7 +243,7 @@ with tab1:
             height=400,
             template="plotly_white",
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width='stretch')
 
         # Health advisories
         st.subheader("🏥 Health Advisories")
@@ -287,7 +287,7 @@ with tab2:
             fig.add_hrect(y0=100, y1=150, fillcolor="orange", opacity=0.05)
             fig.add_hrect(y0=150, y1=200, fillcolor="red", opacity=0.05)
             fig.update_layout(height=450, template="plotly_white")
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, width='stretch')
 
             # Pollutant breakdown
             st.subheader("Pollutant Levels")
@@ -305,13 +305,13 @@ with tab2:
                         row=row, col=col,
                     )
                 fig.update_layout(height=500, showlegend=False, template="plotly_white")
-                st.plotly_chart(fig, use_container_width=True)
+                st.plotly_chart(fig, width='stretch')
 
             # Statistics
             st.subheader("📊 Summary Statistics")
             stats_cols = ["aqi"] + available
             stats = filtered[stats_cols].describe().round(2)
-            st.dataframe(stats, use_container_width=True)
+            st.dataframe(stats, width='stretch')
         else:
             st.info(f"No data available for the last {days_back} days.")
     else:
@@ -327,10 +327,10 @@ with tab3:
     shap_bar_path = MODELS_DIR / "shap_plots" / "shap_bar.png"
 
     if shap_bar_path.exists():
-        st.image(str(shap_bar_path), caption="Top Feature Importance (SHAP)", use_container_width=True)
+        st.image(str(shap_bar_path), caption="Top Feature Importance (SHAP)", width='stretch')
 
     if shap_summary_path.exists():
-        st.image(str(shap_summary_path), caption="SHAP Summary Plot", use_container_width=True)
+        st.image(str(shap_summary_path), caption="SHAP Summary Plot", width='stretch')
 
     if not shap_bar_path.exists() and not shap_summary_path.exists():
         st.info(
@@ -349,7 +349,7 @@ with tab3:
         lime_plots = list(lime_dir.glob("*.png"))
         if lime_plots:
             for plot in lime_plots[:3]:
-                st.image(str(plot), use_container_width=True)
+                st.image(str(plot), width='stretch')
         else:
             st.info("No LIME plots generated yet.")
     else:
@@ -388,7 +388,7 @@ with tab4:
             comparison_df = pd.read_csv(comparison_path, index_col=0)
             st.dataframe(comparison_df.style.highlight_min(subset=["rmse", "mae"], color="#d4edda")
                          .highlight_max(subset=["r2"], color="#d4edda"),
-                         use_container_width=True)
+                         width='stretch')
 
         # Prediction vs Actual plots
         st.subheader("Prediction vs Actual")
@@ -396,7 +396,7 @@ with tab4:
                          "xgb_predictions.png", "model_comparison.png"]:
             img_path = MODELS_DIR / img_name
             if img_path.exists():
-                st.image(str(img_path), use_container_width=True)
+                st.image(str(img_path), width='stretch')
 
     else:
         st.info("No model trained yet. Run the training pipeline first.")
