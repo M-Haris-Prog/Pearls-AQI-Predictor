@@ -3,6 +3,7 @@ Feature pipeline orchestrator.
 Fetches data from APIs, engineers features, and stores in Feature Store.
 Entry point for both manual runs and CI/CD automation.
 """
+import sys
 import logging
 import argparse
 
@@ -118,11 +119,17 @@ def main():
 
     use_hopsworks = not args.no_hopsworks
 
+    success = True
+
     if args.mode in ("current", "both"):
-        run_current_pipeline(use_hopsworks=use_hopsworks)
+        if not run_current_pipeline(use_hopsworks=use_hopsworks):
+            success = False
 
     if args.mode in ("forecast", "both"):
-        run_forecast_pipeline(use_hopsworks=use_hopsworks)
+        if not run_forecast_pipeline(use_hopsworks=use_hopsworks):
+            success = False
+
+    sys.exit(0 if success else 1)
 
 
 if __name__ == "__main__":

@@ -39,24 +39,38 @@ def _make_request(url: str, params: dict, max_retries: int = 3) -> dict:
 
 def fetch_current_air_pollution() -> pd.DataFrame:
     """Fetch current air pollution data for the configured city."""
+    if not OPENWEATHER_API_KEY:
+        logger.error("OPENWEATHER_API_KEY is not set. Cannot fetch data.")
+        return pd.DataFrame()
     params = {
         "lat": CITY_LAT,
         "lon": CITY_LON,
         "appid": OPENWEATHER_API_KEY,
     }
-    data = _make_request(OWM_AIR_POLLUTION_URL, params)
-    return _parse_air_pollution_response(data)
+    try:
+        data = _make_request(OWM_AIR_POLLUTION_URL, params)
+        return _parse_air_pollution_response(data)
+    except Exception as e:
+        logger.error(f"Failed to fetch current air pollution: {e}")
+        return pd.DataFrame()
 
 
 def fetch_air_pollution_forecast() -> pd.DataFrame:
     """Fetch 5-day air pollution forecast (hourly)."""
+    if not OPENWEATHER_API_KEY:
+        logger.error("OPENWEATHER_API_KEY is not set. Cannot fetch data.")
+        return pd.DataFrame()
     params = {
         "lat": CITY_LAT,
         "lon": CITY_LON,
         "appid": OPENWEATHER_API_KEY,
     }
-    data = _make_request(OWM_AIR_POLLUTION_FORECAST_URL, params)
-    return _parse_air_pollution_response(data)
+    try:
+        data = _make_request(OWM_AIR_POLLUTION_FORECAST_URL, params)
+        return _parse_air_pollution_response(data)
+    except Exception as e:
+        logger.error(f"Failed to fetch air pollution forecast: {e}")
+        return pd.DataFrame()
 
 
 def fetch_air_pollution_history(start_ts: int, end_ts: int) -> pd.DataFrame:
@@ -67,6 +81,9 @@ def fetch_air_pollution_history(start_ts: int, end_ts: int) -> pd.DataFrame:
         start_ts: Start Unix timestamp
         end_ts: End Unix timestamp
     """
+    if not OPENWEATHER_API_KEY:
+        logger.error("OPENWEATHER_API_KEY is not set. Cannot fetch data.")
+        return pd.DataFrame()
     params = {
         "lat": CITY_LAT,
         "lon": CITY_LON,
@@ -74,32 +91,50 @@ def fetch_air_pollution_history(start_ts: int, end_ts: int) -> pd.DataFrame:
         "end": end_ts,
         "appid": OPENWEATHER_API_KEY,
     }
-    data = _make_request(OWM_AIR_POLLUTION_HISTORY_URL, params)
-    return _parse_air_pollution_response(data)
+    try:
+        data = _make_request(OWM_AIR_POLLUTION_HISTORY_URL, params)
+        return _parse_air_pollution_response(data)
+    except Exception as e:
+        logger.error(f"Failed to fetch air pollution history: {e}")
+        return pd.DataFrame()
 
 
 def fetch_current_weather() -> pd.DataFrame:
     """Fetch current weather data for the configured city."""
+    if not OPENWEATHER_API_KEY:
+        logger.error("OPENWEATHER_API_KEY is not set. Cannot fetch weather.")
+        return pd.DataFrame()
     params = {
         "lat": CITY_LAT,
         "lon": CITY_LON,
         "appid": OPENWEATHER_API_KEY,
         "units": "metric",
     }
-    data = _make_request(OWM_WEATHER_URL, params)
-    return _parse_weather_response(data)
+    try:
+        data = _make_request(OWM_WEATHER_URL, params)
+        return _parse_weather_response(data)
+    except Exception as e:
+        logger.error(f"Failed to fetch current weather: {e}")
+        return pd.DataFrame()
 
 
 def fetch_weather_forecast() -> pd.DataFrame:
     """Fetch 5-day / 3-hour weather forecast."""
+    if not OPENWEATHER_API_KEY:
+        logger.error("OPENWEATHER_API_KEY is not set. Cannot fetch forecast.")
+        return pd.DataFrame()
     params = {
         "lat": CITY_LAT,
         "lon": CITY_LON,
         "appid": OPENWEATHER_API_KEY,
         "units": "metric",
     }
-    data = _make_request(OWM_FORECAST_URL, params)
-    return _parse_weather_forecast_response(data)
+    try:
+        data = _make_request(OWM_FORECAST_URL, params)
+        return _parse_weather_forecast_response(data)
+    except Exception as e:
+        logger.error(f"Failed to fetch weather forecast: {e}")
+        return pd.DataFrame()
 
 
 def fetch_combined_data(timestamp: Optional[int] = None) -> pd.DataFrame:
