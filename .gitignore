@@ -1,0 +1,43 @@
+# Environment
+.env
+.venv/
+venv/
+env/
+aqienv/
+
+# Data & Models (local cache)
+data/
+models/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+
+# TensorFlow / Keras
+*.h5
+*.pb
+saved_model/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
