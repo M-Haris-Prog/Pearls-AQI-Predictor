@@ -6,14 +6,11 @@ import logging
 import argparse
 import json
 from datetime import datetime
-from pathlib import Path
 
-import numpy as np
-import pandas as pd
 import joblib
 
 from src.config import (
-    MODELS_DIR, PROCESSED_DATA_DIR, ALL_FEATURES, TARGET,
+    MODELS_DIR, ALL_FEATURES, TARGET,
     RANDOM_STATE, TEST_SIZE, SEQUENCE_LENGTH, FORECAST_DAYS,
 )
 from src.feature_pipeline.feature_store import get_features, get_training_data

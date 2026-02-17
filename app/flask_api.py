@@ -5,7 +5,6 @@ Provides endpoints for predictions, features, and explanations.
 import json
 import logging
 from datetime import datetime
-from pathlib import Path
 
 from flask import Flask, jsonify, request
 from flask_cors import CORS
@@ -88,8 +87,7 @@ def explain():
     Get SHAP feature importance for the best model.
     """
     try:
-        from src.config import MODELS_DIR
-        shap_bar_path = MODELS_DIR / "shap_plots" / "shap_bar.png"
+        from src.config import MODELS_DIR  # noqa: F401
 
         # Try to load pre-computed feature importance
         from src.inference.predict import load_best_model

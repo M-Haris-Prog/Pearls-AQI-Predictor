@@ -5,24 +5,18 @@ Loads the best model and generates forecasts.
 import json
 import logging
 from datetime import datetime, timedelta
-from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Dict
 
-import numpy as np
 import pandas as pd
 import joblib
 
 from src.config import (
-    MODELS_DIR, ALL_FEATURES, TARGET, FORECAST_DAYS,
+    MODELS_DIR, ALL_FEATURES, FORECAST_DAYS,
     SEQUENCE_LENGTH, CITY_NAME, AQI_CATEGORIES,
 )
 from src.feature_pipeline.feature_store import get_features
 from src.feature_pipeline.fetch_data import (
-    fetch_current_air_pollution, fetch_current_weather,
     fetch_weather_forecast, fetch_air_pollution_forecast,
-)
-from src.feature_pipeline.feature_engineering import (
-    engineer_features, compute_aqi, add_time_features,
 )
 
 logging.basicConfig(

@@ -3,14 +3,12 @@ SHAP-based model explainability for AQI predictions.
 Generates feature importance plots and per-prediction explanations.
 """
 import logging
-from pathlib import Path
 from typing import Optional
 
 import numpy as np
-import pandas as pd
 import matplotlib.pyplot as plt
 
-from src.config import MODELS_DIR, ALL_FEATURES
+from src.config import MODELS_DIR
 
 logger = logging.getLogger(__name__)
 
@@ -89,8 +87,6 @@ def compute_shap_values(
     Returns:
         Dictionary with SHAP values and feature importance
     """
-    import shap
-
     if feature_names is None:
         feature_names = [f"feature_{i}" for i in range(X.shape[1])]
 
@@ -215,7 +211,7 @@ def plot_force(
     """
     import shap
 
-    fig = shap.force_plot(
+    shap.force_plot(
         explainer.expected_value,
         shap_values[sample_idx],
         X[sample_idx],

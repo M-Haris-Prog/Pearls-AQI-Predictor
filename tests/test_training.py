@@ -4,7 +4,6 @@ Uses synthetic data to verify model training and evaluation.
 """
 import pytest
 import numpy as np
-import pandas as pd
 
 
 class TestModels:

@@ -3,7 +3,7 @@ Model evaluation utilities.
 Computes RMSE, MAE, R² and generates comparison visualizations.
 """
 import logging
-from typing import Dict, List, Tuple
+from typing import Dict
 
 import numpy as np
 import pandas as pd

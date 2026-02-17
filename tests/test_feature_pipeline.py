@@ -6,7 +6,6 @@ import pytest
 import numpy as np
 import pandas as pd
 from unittest.mock import patch, MagicMock
-from datetime import datetime
 
 
 # ─── Test Feature Engineering ──────────────────────────────────────
@@ -213,7 +212,7 @@ class TestFeatureStore:
 
     def test_save_and_load_local(self, sample_features, tmp_path):
         """Test saving and loading features locally."""
-        from src.feature_pipeline.feature_store import _save_local, _load_local, LOCAL_FEATURE_FILE
+        from src.feature_pipeline.feature_store import _save_local, _load_local
 
         # Temporarily change the file path
         import src.feature_pipeline.feature_store as fs_module

@@ -7,12 +7,9 @@ import json
 import logging
 import argparse
 from datetime import datetime, timedelta
-from pathlib import Path
-
-import pandas as pd
 
 from src.config import PROCESSED_DATA_DIR
-from src.feature_pipeline.fetch_data import fetch_air_pollution_history, fetch_current_weather
+from src.feature_pipeline.fetch_data import fetch_air_pollution_history
 from src.feature_pipeline.feature_engineering import engineer_features
 from src.feature_pipeline.feature_store import insert_features
 

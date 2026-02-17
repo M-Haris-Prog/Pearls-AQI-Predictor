@@ -2,10 +2,6 @@
 Tests for the Inference Pipeline.
 Verifies prediction output format and alert system.
 """
-import pytest
-import numpy as np
-import pandas as pd
-from unittest.mock import patch, MagicMock
 
 
 class TestInference:

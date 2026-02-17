@@ -3,11 +3,9 @@ LIME-based model explainability for AQI predictions.
 Provides local interpretable explanations for individual predictions.
 """
 import logging
-from pathlib import Path
 from typing import Optional
 
 import numpy as np
-import pandas as pd
 import matplotlib.pyplot as plt
 
 from src.config import MODELS_DIR
@@ -70,7 +68,8 @@ def explain_prediction(
     if hasattr(model, "predict"):
         predict_fn = model.predict
     else:
-        predict_fn = lambda x: model.predict(x)
+        def predict_fn(x):
+            return model.predict(x)
 
     explanation = explainer.explain_instance(
         data_row=instance,

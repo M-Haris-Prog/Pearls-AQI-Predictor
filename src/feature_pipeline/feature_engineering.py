@@ -7,8 +7,7 @@ import numpy as np
 import pandas as pd
 
 from src.config import (
-    POLLUTANT_FEATURES, WEATHER_FEATURES, TIME_FEATURES,
-    DERIVED_FEATURES, LAG_FEATURES, TARGET,
+    WEATHER_FEATURES, TARGET,
 )
 
 

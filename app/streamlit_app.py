@@ -9,7 +9,6 @@ from datetime import datetime, timedelta
 
 import streamlit as st
 import pandas as pd
-import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
@@ -84,11 +83,16 @@ def get_aqi_category(aqi: float) -> str:
 
 def get_aqi_emoji(aqi: float) -> str:
     """Get emoji for AQI value."""
-    if aqi <= 50: return "🟢"
-    if aqi <= 100: return "🟡"
-    if aqi <= 150: return "🟠"
-    if aqi <= 200: return "🔴"
-    if aqi <= 300: return "🟣"
+    if aqi <= 50:
+        return "🟢"
+    if aqi <= 100:
+        return "🟡"
+    if aqi <= 150:
+        return "🟠"
+    if aqi <= 200:
+        return "🔴"
+    if aqi <= 300:
+        return "🟣"
     return "⚫"
 
 

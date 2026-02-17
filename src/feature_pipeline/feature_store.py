@@ -4,8 +4,6 @@ Handles reading/writing features and managing Feature Groups & Views.
 Falls back to local Parquet storage if Hopsworks is unavailable.
 """
 import logging
-from datetime import datetime
-from pathlib import Path
 from typing import Optional, Tuple
 
 import pandas as pd

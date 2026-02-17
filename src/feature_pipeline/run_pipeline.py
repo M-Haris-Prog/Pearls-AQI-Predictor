@@ -5,7 +5,6 @@ Entry point for both manual runs and CI/CD automation.
 """
 import logging
 import argparse
-from datetime import datetime
 
 from src.feature_pipeline.fetch_data import (
     fetch_current_air_pollution,

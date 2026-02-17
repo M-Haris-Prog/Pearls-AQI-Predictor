@@ -79,8 +79,10 @@ TEST_SIZE = 0.2
 POLLUTANT_FEATURES = ["pm2_5", "pm10", "no2", "so2", "co", "o3"]
 WEATHER_FEATURES = ["temperature", "humidity", "wind_speed", "pressure"]
 TIME_FEATURES = ["hour", "day_of_week", "month", "is_weekend", "season"]
-DERIVED_FEATURES = ["aqi_change_rate", "pm25_pm10_ratio",
-                     "rolling_aqi_6h", "rolling_aqi_12h", "rolling_aqi_24h"]
+DERIVED_FEATURES = [
+    "aqi_change_rate", "pm25_pm10_ratio",
+    "rolling_aqi_6h", "rolling_aqi_12h", "rolling_aqi_24h",
+]
 LAG_FEATURES = ["aqi_lag_1", "aqi_lag_3", "aqi_lag_6", "aqi_lag_12", "aqi_lag_24"]
 
 ALL_FEATURES = (POLLUTANT_FEATURES + WEATHER_FEATURES + TIME_FEATURES

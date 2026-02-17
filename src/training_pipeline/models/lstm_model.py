@@ -17,7 +17,7 @@ def build_model(
     output_steps: int = 3,
     lstm_units: int = 64,
     dropout: float = 0.2,
-) -> "tf.keras.Model":
+) -> object:
     """
     Build an LSTM model for multi-step AQI forecasting.
 
