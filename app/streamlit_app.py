@@ -50,8 +50,14 @@ st.markdown("""
         padding: 15px;
         border-radius: 8px;
         border-left: 5px solid #ff4444;
-        background-color: #fff3f3;
+        background-color: #2d1a1a;
+        color: #ffcc00;
         margin: 10px 0;
+        font-size: 16px;
+    }
+    .alert-banner strong {
+        color: #ff6b6b;
+        font-size: 18px;
     }
     .metric-card {
         background-color: #f0f2f6;
