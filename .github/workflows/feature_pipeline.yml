@@ -32,10 +32,8 @@ jobs:
       - name: Run Feature Pipeline
         env:
           OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
-          HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
-          HOPSWORKS_PROJECT_NAME: ${{ secrets.HOPSWORKS_PROJECT_NAME }}
         run: |
-          python -m src.feature_pipeline.run_pipeline --mode current
+          python -m src.feature_pipeline.run_pipeline --mode current --no-hopsworks
 
       - name: Upload feature data artifact
         uses: actions/upload-artifact@v4
